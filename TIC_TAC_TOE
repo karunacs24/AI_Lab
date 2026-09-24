@@ -1,0 +1,48 @@
+# Tic Tac Toe
+
+board = ["1", "2", "3",
+         "4", "5", "6",
+         "7", "8", "9"]
+
+def display():
+    print(board[0], "|", board[1], "|", board[2])
+    print("--+---+--")
+    print(board[3], "|", board[4], "|", board[5])
+    print("--+---+--")
+    print(board[6], "|", board[7], "|", board[8])
+
+
+def check_win(p):
+    if (board[0] == p and board[1] == p and board[2] == p) or \
+       (board[3] == p and board[4] == p and board[5] == p) or \
+       (board[6] == p and board[7] == p and board[8] == p) or \
+       (board[0] == p and board[3] == p and board[6] == p) or \
+       (board[1] == p and board[4] == p and board[7] == p) or \
+       (board[2] == p and board[5] == p and board[8] == p) or \
+       (board[0] == p and board[4] == p and board[8] == p) or \
+       (board[2] == p and board[4] == p and board[6] == p):
+        return True
+    return False
+
+print("TIC TAC TOE")
+display()
+
+for turn in range(9):
+
+    if turn % 2 == 0:
+        player = "X"
+    else:
+        player = "O"
+
+    position = int(input("Player " + player + ", enter position (1-9): "))
+
+    board[position - 1] = player
+
+    display()
+
+    if check_win(player):
+        print(player, "wins!")
+        break
+
+else:
+    print("Game is a draw!")
